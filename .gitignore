@@ -1,0 +1,44 @@
+# --- Python cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.manifest
+
+# --- Virtual environments ---
+env/
+venv/
+.venv/
+
+# --- Build / packaging ---
+build/
+dist/
+pip-wheel-metadata/
+
+# --- Logs ---
+*.log
+
+# --- OS-specific ---
+.DS_Store
+Thumbs.db
+
+# --- Editor files ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Python tooling ---
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+
+# --- Local config (if any) ---
+*.local
+.env
+.env.*
+
