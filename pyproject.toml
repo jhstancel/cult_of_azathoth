@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cult-of-azathoth"
+version = "0.1.0"
+description = "Two-player text-based horror fantasy game (pass & play) built around sanity and corrupted output."
+requires-python = ">=3.11"
+readme = "storyboard.md"
+license = { text = "MIT" }
+
+authors = [
+  { name = "John Stancel" }
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "ruff",
+]
+
+[tool.setuptools]
+packages = ["game"]
+
