@@ -1,6 +1,6 @@
 # Makefile for Cult of Azathoth
 
-PYTHON ?= python
+PYTHON ?= python3
 
 .PHONY: run clean
 
