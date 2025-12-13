@@ -1,0 +1,20 @@
+# Rooms definition for this scenario
+rooms:
+  - id: "start"
+    name: "Moldy Cellar"
+    description: |
+      A moldy cellar. The air is wet and stale.
+      The stone floor is cold underfoot.
+    detail_description: |
+      There are paintings dripping off the wall, and cockroaches running about.
+    exits:
+      north: "hallway"
+
+  - id: "hallway"
+    name: "Whispering Hallway"
+    description: |
+      Narrow stone walls close in on you. Faint chanting echoes
+      from somewhere ahead, just beneath the edge of hearing.
+    exits:
+      south: "start"
+

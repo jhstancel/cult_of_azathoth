@@ -1,0 +1,56 @@
+items:
+  - id: "chalk"
+    name: "Cracked Chalk"
+    description: |
+      A piece of chalk worn down almost to dust.
+    tags: ["marking"]
+    location: "entry"
+
+  - id: "whisper_stone"
+    name: "Whisper Stone"
+    description: |
+      A smooth stone that hums faintly when held.
+      It seems to react to nearby walls.
+    tags: ["signal", "weird"]
+    location: "echo"
+
+  - id: "rusted_compass"
+    name: "Rusted Compass"
+    description: |
+      The needle spins slowly, never settling.
+      Sometimes it points somewhere that feels important.
+    tags: ["navigation", "unreliable"]
+    location: "fork"
+
+  - id: "mirror_shard"
+    name: "Mirror Shard"
+    description: |
+      A jagged fragment chipped from the mirrored wall.
+      Your reflection in it does not always match you.
+    tags: ["reflection", "dangerous"]
+    location: "mirror"
+
+  - id: "warm_key"
+    name: "Warm Iron Key"
+    description: |
+      A heavy iron key that is warm to the touch.
+      It pulses faintly, like a heartbeat.
+    tags: ["key", "organic"]
+    location: "hollow"
+
+  - id: "black_thread"
+    name: "Black Thread"
+    description: |
+      A spool of thread darker than the shadows around it.
+      It never seems to run out.
+    tags: ["tracking"]
+    location: "sinkhole"
+
+  - id: "core_fragment"
+    name: "Core Fragment"
+    description: |
+      A shard chipped from the maze’s heart.
+      Holding it makes your thoughts feel louder.
+    tags: ["objective", "corrupting"]
+    location: "heart"
+

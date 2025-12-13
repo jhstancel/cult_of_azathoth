@@ -1,0 +1,103 @@
+scenario:
+  name: "The Living Maze"
+  mode: "reach:heart"
+  intro: |
+    You awaken standing upright, not lying down.
+    Stone walls press close on all sides, slick with moisture.
+    The air smells wrong — old, metallic, expectant.
+    Somewhere deep within the maze, something is waiting.
+
+  starts:
+    P1: "entry"
+    P2: "mirror"
+
+rooms:
+  - id: "entry"
+    name: "Maze Entry"
+    description: |
+      A narrow stone corridor stretches forward. The walls are damp and cold.
+    detail_description: |
+      Scratches mark the walls at shoulder height, as if something paced here.
+      The floor slopes slightly downward, pulling you in.
+    exits:
+      forward: "fork"
+
+  - id: "fork"
+    name: "Forked Passage"
+    description: |
+      The corridor splits in three directions.
+    detail_description: |
+      The stone here is smoother, worn by countless turns and retraced steps.
+      Each path feels equally wrong.
+    exits:
+      left: "echo"
+      right: "sinkhole"
+      forward: "loop"
+
+  - id: "echo"
+    name: "Echo Chamber"
+    description: |
+      A circular chamber where sound behaves strangely.
+    detail_description: |
+      Your breathing returns to you a second late.
+      Footsteps echo even when you stand still.
+    exits:
+      back: "fork"
+      whisper: "mirror"
+
+  - id: "sinkhole"
+    name: "Sunken Corridor"
+    description: |
+      The floor dips sharply, slick with moisture.
+    detail_description: |
+      Water drips steadily from the ceiling.
+      The walls bulge inward, as if the maze is collapsing slowly.
+    exits:
+      back: "fork"
+      down: "hollow"
+
+  - id: "loop"
+    name: "Endless Hall"
+    description: |
+      A long hallway stretches farther than it should.
+    detail_description: |
+      You are certain you have passed this crack in the wall before.
+      Time feels slightly out of sync here.
+    exits:
+      back: "fork"
+      forward: "loop"   # intentional loop
+      side: "hollow"
+
+  - id: "mirror"
+    name: "Mirrored Vault"
+    description: |
+      Polished stone reflects your movement imperfectly.
+    detail_description: |
+      Your reflection lags half a second behind.
+      Sometimes it moves when you do not.
+    exits:
+      out: "echo"
+      fracture: "heart"
+
+  - id: "hollow"
+    name: "Hollow Crossing"
+    description: |
+      A wide junction carved out of the maze’s core.
+    detail_description: |
+      The stone here is warm to the touch.
+      You feel watched, evaluated.
+    exits:
+      up: "sinkhole"
+      side: "loop"
+      inward: "heart"
+
+  - id: "heart"
+    name: "The Maze’s Heart"
+    description: |
+      The walls pulse faintly, like something breathing.
+    detail_description: |
+      Veins of dark stone throb with slow intent.
+      The maze is aware of you now.
+    exits:
+      outward: "hollow"
+

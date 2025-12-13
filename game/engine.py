@@ -69,17 +69,26 @@ class GameEngine:
     def describe_surroundings(self, player_id: str) -> None:
         """
         Basic glance at the current room shown at the start of a turn.
-        Does NOT reveal items; just a simple description.
+        If the player has inspected (searched) this room before, show detail.
         """
         player, loc = self._get_player_and_location(player_id)
         if loc is None:
             self.state.add_message("You are nowhere. That seems… bad.")
             return
 
-        desc_lines = [
-            f"{player.name}, you are in {loc.name}.",
-            loc.description,
-        ]
+        inspected = loc.id in self.state.inspected_rooms.get(player_id, set())
+
+        if inspected:
+            text = (loc.detail_description or "").strip()
+            if not text:
+                text = (loc.description or "").strip()
+        else:
+            text = (loc.description or "").strip()
+
+        desc_lines = [f"{player.name}, you are in {loc.name}."]
+        if text:
+            desc_lines.append(text)
+
         self.state.add_message("\n".join(desc_lines))
 
     def _handle_look(self, player_id: str) -> None:
@@ -91,9 +100,13 @@ class GameEngine:
             self.state.add_message("You are nowhere. That seems… bad.")
             return
 
+        detail = (loc.detail_description or "").strip()
+        if not detail:
+            detail = "You don't notice anything new."
+
         desc_lines = [
             f"You take a careful look around {loc.name}.",
-            loc.detail_description or loc.description,
+            detail,
         ]
 
         if loc.neighbors:
@@ -119,8 +132,7 @@ class GameEngine:
             desc_lines.append(f"Carrying: {inv_list}.")
 
         self.state.add_message("\n".join(desc_lines))
-
-    def _handle_move(self, player_id: str, target: str) -> None:
+ def _handle_move(self, player_id: str, target: str) -> None:
         player, loc = self._get_player_and_location(player_id)
         if loc is None:
             self.state.add_message("You cannot move from here.")
@@ -152,14 +164,18 @@ class GameEngine:
         new_loc = self.state.world.get_location(destination_id)
         if new_loc:
             self.state.add_message(f"You move into {new_loc.name}.")
+            self.describe_surroundings(player_id)
         else:
             self.state.add_message("You step into an undefined void. Odd.")
-
     def _handle_search(self, player_id: str) -> None:
         player, loc = self._get_player_and_location(player_id)
         if loc is None:
             self.state.add_message("There is nothing here to search.")
             return
+
+        if player_id not in self.state.inspected_rooms:
+            self.state.inspected_rooms[player_id] = set()
+        self.state.inspected_rooms[player_id].add(loc.id)
 
         if not loc.items:
             self.state.add_message("You search the area but find nothing useful.")

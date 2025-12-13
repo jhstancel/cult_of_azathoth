@@ -7,15 +7,16 @@ name = "cult-of-azathoth"
 version = "0.1.0"
 description = "Two-player text-based horror fantasy game (pass & play) built around sanity and corrupted output."
 requires-python = ">=3.11"
-readme = "storyboard.md"
+readme = "dev/storyboard.md"
 license = { text = "MIT" }
 
 authors = [
   { name = "John Stancel" }
 ]
 
-dependencies = []
-
+dependencies = [
+  "pyyaml>=6.0"
+]
 [project.optional-dependencies]
 dev = [
   "black",

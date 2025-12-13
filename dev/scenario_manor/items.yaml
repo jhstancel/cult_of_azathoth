@@ -1,0 +1,14 @@
+# Items definition for this scenario
+items:
+  - id: "rusty_key"
+    name: "Rusty Key"
+    location: "start"
+    description: "A key flaking with orange rust. It might still work on an old lock."
+    usable_on: ["cellar_door"]
+
+  - id: "torn_page"
+    name: "Torn Page"
+    location: "hallway"
+    description: "A scrap of parchment covered in frantic handwriting and a strange sigil."
+    usable_on: []
+

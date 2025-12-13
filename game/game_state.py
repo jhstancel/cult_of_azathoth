@@ -1,7 +1,7 @@
-# game/game_state.py
+ # game/game_state.py
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
 
 from .world import World
 from .entities import Player
@@ -18,6 +18,8 @@ class GameState:
     winner_id: Optional[str] = None
     messages: List[str] = field(default_factory=list)
 
+    inspected_rooms: Dict[str, Set[str]] = field(default_factory=dict)
+
     def current_player(self) -> Player:
         return self.players[self.turn_order[self.current_turn_index]]
 
@@ -29,4 +31,3 @@ class GameState:
 
     def add_message(self, message: str) -> None:
         self.messages.append(message)
-
